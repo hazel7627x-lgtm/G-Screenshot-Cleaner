@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "G-Screenshot Auto-Cleaner",
+  "version": "1.0",
+  "description": "Deletes the last screenshot after it is used in Gemini.",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": ["storage", "alarms"],
+  "action": {
+    "default_title": "G-Screenshot Auto-Cleaner",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "host_permissions": ["https://gemini.google.com/*", "http://127.0.0.1:13337/*", "http://localhost:13337/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
